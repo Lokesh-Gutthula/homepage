@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care and Share - Christian Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+/*            line-height: 1.2;*/
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+         :root {
+            --primary-color: #1e40af;
+            --text-color: #1f2937;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(46, 113, 117, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            padding: 1rem;
+        }
+
+            /*  LOGO      */
+
+        .logo-container {
+            margin-left: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            padding: 0 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        main {
+            flex-grow: 1;
+            padding-top: 5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .main-image {
+            padding: 3.5px 0 0 0;
+        }
+
+        .image-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .main-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        /*     Bible Verse        */
+
+        .quote {
+            text-align: center;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.5rem;
+            animation: fadeIn 1s ease-out;
+
+        }
+
+       /* .quote-reference {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }*/
+
+        .verse-section {
+            background: #eff6ff;
+            padding: 2rem 0;
+        }
+
+        .verse-container {
+            max-width: 62rem;
+            margin: 0 auto;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .verse-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .verse-text {
+            font-family: 'Noto Sans Telugu', sans-serif;
+
+            font-size: 1.25rem;
+/*            margin-bottom: 1rem;*/
+        }
+
+        .verse-reference {
+            text-align: right;
+            font-weight: 600;
+            color: #2563eb;
+        }
+
+        .verse-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /*   COPY & SHARE     */
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            color: #4b5563;
+            cursor: pointer;
+            transition: color 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .action-button img{
+            width: 22px;
+            height: 22px;
+        }
+
+        .action-button:hover {
+            color: #2563eb;
+        }
+
+
+
+        /* CTA CARDS */        
+    
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        /*  padding: 1rem;*/
+        }
+
+        .card {
+            background: white;
+            color: var(--text-color);
+            border-radius: 1rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card-header{
+            background: rgba(46, 113, 117);
+            color: white;
+            text-align: center;
+            padding: 0.6rem;
+        }
+
+        .card-body {
+            padding: 0.9rem;
+
+            font-family: 'Noto Sans Telugu', sans-serif;
+        }
+
+
+        .card p {
+            margin-bottom: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .cta-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .learn-button {
+            background: #a6865a;
+            color: white;
+        }
+
+        .learn-button:hover {
+            background: #8b7355;
+            transform: scale(1.05);
+        }
+
+        .donate-button {
+            background: #059669;
+            color: white;
+        }
+
+        .donate-button:hover {
+            background: #047857;
+            transform: scale(1.05);
+        }
+
+
+
+        /*  PRAYER REQUEST CARD      */
+
+        .additional-content {
+/*            padding: 2rem 0;*/
+            background-color: #f9f9f9;
+        }
+
+        .content-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .content-card-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content-card-header h3 img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .toggle-button button {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.25rem;
+            font-weight: 600;
+            background-color: #5c6bc0;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .toggle-button button:hover {
+            background-color: #3f4e9d;
+        }
+
+        .arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-button button .arrow {
+            transform: rotate(0deg);
+        }
+
+        .toggle-button button:hover .arrow {
+        /*    transform: rotate(180deg);*/
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+
+/*  content form and prayer request styles      */
+
+        .form-section {
+            background: var(--background-light);
+            padding: 2rem 0;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .form-section.open {
+            opacity: 1;
+            max-height: 1000px;
+        }
+
+        .form-title {
+            font-size: 1.4rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .form-container {
+            max-width: 4000px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(30, 64, 175, 1.0);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: rgba(30, 4, 175, 0.9);
+            transform: translateY(-2px);
+        }
+
+
+        footer {
+            background: var(--text-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .heart-icon {
+            color: #ef4444;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @media (max-width: 768px) {
+            .quote {
+                font-size: 1rem;
+                font-weight: bolder;
+                margin-bottom: 0.3rem;
+
+            }
+            .image-container {
+            /*  width: 100%;*/
+                padding: 0;
+            }
+
+            .verse-text{
+                font-size: 0.9rem;
+                font-size: bolder;
+            }
+
+            .logo-container {
+                margin-left: 0px;
+            }
+
+            .verse-actions {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .card-container {
+                padding: 0;
+                grid-template-columns: 1fr;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                padding: 0;
+            }
+
+            .form-container {
+                margin: 0 1rem;/
+            }
+
+            .content-card {
+                padding: 1rem;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .content-card-header h3 {
+                font-size: 1rem; /* Smaller font for mobile */
+            }
+
+            .toggle-button button {
+                padding: 0.5rem 0.75rem; /* Reduce padding for mobile */
+                font-size: 0.9rem; /* Slightly smaller font */
+                gap: 0.3rem;
+            }
+
+            .arrow {
+                font-size: 1rem; /* Reduce arrow size */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://jcmandir.com/media/images/church.jpg" alt="Logo" />
+            </div>
+            <h1 class="site-title">Care & Share</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="main-image">
+            <div class="container">
+                <div class="image-container">
+                    <div class="quote">
+                        "Life is a small journey from heaven to heaven."
+                        <!-- <div class="quote-reference">- God's Word</div> -->
+                    </div>
+                    <img src="https://jcmandir.com/media/images/main.jpg" alt="Cross at Sunset">
+                </div>
+            </div>
+        </section>
+
+        <section class="verse-section">
+            <div class="container">
+                <h2 class="verse-title">Verse of the Day</h2>
+                <div class="verse-container">
+                    <p class="verse-text">దేవుడు లోకమును ఎంతో ప్రేమించెను. కాగా ఆయన తన అద్వితీయ కుమారునిగా పుట్టిన వానియందు విశ్వాసముంచు ప్రతివాడును నశింపక నిత్యజీవము పొందునట్లు ఆయనను అనుగ్రహించెను.</p>
+                    <p class="verse-reference">యోహాను 3:16 </p>
+                    <div class="verse-actions">
+                        <button class="action-button" onclick="copyVerse()">
+                            <img src="https://jcmandir.com/media/images/copy.svg" alt="copy" />
+                            Copy
+                        </button>
+                        <button class="action-button" onclick="shareToWhatsApp()">
+                            <img src="https://jcmandir.com/media/images/whatsapp.svg" alt="whatsapp" />
+                            Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="container">
+                <h2 class="cta-title">Join Us</h2>
+
+                <div class="card-container">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <!-- <h3>బైబిల్ నేర్చుకోవాలనుకుంటున్నారా? </h3> -->
+                            <h3>Want to learn Bible?</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <p>ఆత్మీయమైన అనేక విషయాలు తెలుసుకోడానికి</p>
+                            <p>జీవితంలో ఎదురయ్యే సవాళ్లను అధిగమించడానికి</p>
+                            <p>దేవుని తెలుసుకోవడం వల్ల వచ్చే ప్రేమ మరియు శాంతిని పొందుకోవడానికి </p>
+                            <button class="cta-button learn-button" onclick="location.href='#learn'">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                                <!-- బైబిల్ నేర్చుకోండి... -->
+                                Learn Bible
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                        <!-- <h3>దేవుని పనికి సహాయం చేయాలనుకుంటునారా?</h3> -->
+                            <h3>Donate Now</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <p>సత్యాన్ని కోరుకునే వారికి సువార్తను వ్యాప్తి చేయడం కొరకు</p>
+                            <p>అక్కరిలో ఉన్న వారికి సహాయం చేయడం కొరకు </p>
+                            <p>చిన్నదైనా, పెద్దదైనా ప్రతి సహకారం దేవుని రాజ్యాన్ని మరింత ముందుకు తీసుకెళ్లడంలో మనకు సహాయపడుతుంది.</p>
+                            <button class="cta-button donate-button" onclick="location.href='#donate'">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                                <!-- దేవుని పనికి సహాయం చేయండి... -->
+                                Donate Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="additional-content">
+    <div class="container">
+        <div class="content-grid">
+            <div class="content-card" onclick="togglePrayerForm(this)">
+                <div class="content-card-header">
+                    <h3>
+                        <img src="./icons/pencil.svg" alt="pencil">
+                        Have Prayer Requests?
+                    </h3>
+                    <div class="toggle-button">
+                        <button>
+                            <span class="button-text">Proceed</span>
+                            <span id="arrow" class="arrow">&#x25B2;</span>
+                        </button>
+                    </div>
+                </div>
+                <p>Share your prayer requests with us. We pray for you.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+
+
+        <section class="form-section" id="prayerRequestForm">
+            <div class="container">
+                <h2 class="form-title">Submit a Prayer Request</h2>
+                <form class="form-container">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prayer" class="form-label">Prayer Request</label>
+                        <textarea id="prayer" class="form-textarea" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Submit Prayer Request</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                Made with 
+                <span class="heart-icon">❤</span>
+                for God's glory
+            </div>
+            <div> <span style="font-size: 20px;"> &copy; </span> <span id="year"></span>  Care and Share. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+
+
+        // Copy verse function
+        async function copyVerse() {
+            const verse = "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16";
+            try {
+                await navigator.clipboard.writeText(verse);
+                alert('Verse copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy verse:', err);
+            }
+        }
+
+        // Share to WhatsApp function
+        function shareToWhatsApp() {
+            const verse = "దేవుడు లోకమును ఎంతో ప్రేమించెను. కాగా ఆయన తన అద్వితీయ కుమారునిగా పుట్టిన వానియందు విశ్వాసముంచు ప్రతివాడును నశింపక నిత్యజీవము పొందునట్లు ఆయనను అనుగ్రహించెను.";
+            const url = window.location.href;
+            const shareText = `${verse}\n\nVisit us at: ${url}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank');
+        }
+
+
+               // Prayer form toggle
+        function togglePrayerForm() {
+            const formSection = document.getElementById('prayerRequestForm');
+            formSection.classList.toggle('open');
+
+            const arrow = document.getElementById('arrow');
+
+            if (arrow.textContent === '▲') {
+            arrow.textContent = '▼'; // Down arrow
+            } else {
+            arrow.textContent = '▲'; // Up arrow
+            }
+        }
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('Prayer request submitted successfully. We will pray for you. 🙏');
+            e.target.reset();
+            setTimeout(() => togglePrayerForm(), 1500);
+        });
+
+        // Initialize page animations
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.card, .content-card, .verse-container').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    element.style.transition = 'all 0.5s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
+
+
+    </script>
+</body>
+</html>
